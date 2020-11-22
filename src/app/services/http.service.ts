@@ -11,7 +11,7 @@ export class HttpService {
   constructor(private httpClient: HttpClient) { }
 
   get(): Observable<ILocation[]> {
-    return this.httpClient.get<ILocation[]>(this.url);
+    return this.httpClient.get<ILocation[]>(window.location.href + this.url);
   }
 
 }
