@@ -3,8 +3,7 @@
 }
 
 .item-image{
-  height: 75%;
-  width: 100%;
+
 }
 
 .mat-grid-tile {
@@ -13,20 +12,34 @@
 }
 
 .mat-grid-tile .mat-grid-tile-header {
-  height: 34px;
+  height: 10%;
 }
 
 .mat-grid-tile .mat-grid-tile-footer {
   background: #4156B5;
   opacity: 0.8;
   justify-content: space-between;
+  height: 15%;
+}
+
+.mat-grid-tile-content {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  height: 75%;
+  right: 0;
 }
 
 .catalog-info {
   justify-content: space-around;
+  line-height: 2.5;
 }
 
 .location-info {
   vertical-align: middle;
-  line-height: 2.6;
+}
+
+.item-image {
+  width: 100%;
+  height: 100%;
 }

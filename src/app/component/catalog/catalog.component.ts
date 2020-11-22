@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ICategory} from '../../models/category';
 import {CategoryService} from '../../services/category.service';
 import {ISubcategory} from '../../models/subcategory';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {AppConstants} from '../../constants/app.constants';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-catalog',
@@ -18,16 +18,26 @@ export class CatalogComponent implements OnInit {
   category?: string;
   locationBranches: string[];
   imagesPath: string;
+  colspan = 4;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private categoryService: CategoryService,
               private snackBar: MatSnackBar) {
-    this.imagesPath = AppConstants.baseURL + AppConstants.projectName + '/assets/images/category/';
+    this.imagesPath = environment.baseUrl + '/assets/images/category/';
   }
 
   ngOnInit(): void {
     this.loadData();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    if (window.innerWidth <= 720) {
+      this.colspan = 2;
+    } else {
+      this.colspan = 4;
+    }
   }
 
   back(): void {

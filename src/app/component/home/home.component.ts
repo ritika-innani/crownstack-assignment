@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   private loadData(): void {
     this.locationService.getLocationsWithBranches().subscribe((data: ILocation[]) => {
       this.locations = data;
+    }, (e) => {
+      console.log('Error ', e);
     });
   }
 

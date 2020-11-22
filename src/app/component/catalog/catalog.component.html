@@ -25,20 +25,24 @@
         </div>
     </mat-card>
     <div class="catalog-wrap">
-        <mat-grid-list class="" cols="4" rowHeight="1:1" gutterSize="15px">
+        <mat-grid-list class="" [cols]="colspan" rowHeight="1:1" gutterSize="15px">
             <mat-grid-tile *ngFor="let item of catalog">
                 <mat-grid-tile-header>{{item.name}}</mat-grid-tile-header>
 
                 <!-- If Category Item then take from category directory -->
                 <div *ngIf="item.subcategories;else other_content">
+                  <div class="mat-grid-tile-content">
                     <img alt="catalog-image" *ngIf="item.image" class="item-image" src="{{imagesPath + item.image}}" />
                     <h2 *ngIf="!item.image">Item Image Not Available</h2>
+                  </div>
                 </div>
 
                 <!-- If SubCategory Item then take from subcategory directory -->
                 <ng-template #other_content>
+                  <div class="mat-grid-tile-content">
                     <img alt="catalog-image" *ngIf="item.image" class="item-image" src="{{imagesPath + 'subcategory/' + item.image}}" />
                     <h2 *ngIf="!item.image">Item Image Not Available</h2>
+                  </div>
                 </ng-template>
 
                 <mat-grid-tile-footer

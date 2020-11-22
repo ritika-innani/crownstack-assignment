@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ILocation} from '../models/location';
 import {Observable} from 'rxjs';
-import {AppConstants} from '../constants/app.constants';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class HttpService {
   constructor(private httpClient: HttpClient) { }
 
   get(): Observable<ILocation[]> {
-    return this.httpClient.get<ILocation[]>(AppConstants.baseURL + AppConstants.projectName + this.url);
+    return this.httpClient.get<ILocation[]>(environment.baseUrl + this.url);
   }
 
 }

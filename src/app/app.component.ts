@@ -15,6 +15,8 @@ export class AppComponent {
     this.route = router.url;
     this.locationService.getLocations().subscribe((data) => {
       this.locations = data;
+    }, (e) => {
+      console.log('Error ', e);
     });
     router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
