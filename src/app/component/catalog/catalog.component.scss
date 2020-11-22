@@ -1,0 +1,32 @@
+.catalog-wrap {
+  padding: 10px;
+}
+
+.item-image{
+  height: 75%;
+  width: 100%;
+}
+
+.mat-grid-tile {
+  border: solid 1px #aaa;
+  border-radius: 1%;
+}
+
+.mat-grid-tile .mat-grid-tile-header {
+  height: 34px;
+}
+
+.mat-grid-tile .mat-grid-tile-footer {
+  background: #4156B5;
+  opacity: 0.8;
+  justify-content: space-between;
+}
+
+.catalog-info {
+  justify-content: space-around;
+}
+
+.location-info {
+  vertical-align: middle;
+  line-height: 2.6;
+}

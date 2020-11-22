@@ -1,0 +1,28 @@
+h1, h3 {
+  color: white;
+}
+
+h1 {
+  font: 500 32px/38px Roboto, "Helvetica Neue", sans-serif;
+}
+
+h3 {
+  margin-bottom: 5px;
+}
+
+button {
+  background: white;
+}
+
+.left-pane {
+  margin: auto 30px;
+}
+
+.home-page {
+  background-image: url('../../../assets/images/crown-back.jpg');
+  background-color: #cccccc;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}

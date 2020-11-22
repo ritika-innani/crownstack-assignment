@@ -1,0 +1,28 @@
+<div class="full-height home-page">
+    <mat-grid-list class="full-height" cols="2" rowHeight="fit">
+        <mat-grid-tile>
+            <div class="text-center left-pane">
+                <h1>Getting items on rent was never this easier...</h1>
+                <h3>Start by selecting a location</h3>
+                <button mat-button [matMenuTriggerFor]="main_menu">Menu</button>
+                <mat-menu #main_menu="matMenu">
+                    <ng-container *ngFor="let location of locations">
+                        <button
+                                mat-menu-item
+                                [matMenuTriggerFor]="sub_menu"
+                                [routerLink]="['/catalog', { location: location.name}]">
+                            {{ location.name }}</button>
+                        <mat-menu #sub_menu="matMenu">
+                            <button *ngFor="let branch of location.branches"
+                                    mat-menu-item
+                                    [routerLink]="['/catalog', { location: location.name, branch: branch }]">
+                                {{ branch }}</button>
+                        </mat-menu>
+                    </ng-container>
+                </mat-menu>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

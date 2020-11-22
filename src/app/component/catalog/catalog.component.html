@@ -1,0 +1,57 @@
+<div class="catalog-wrap" >
+    <mat-card>
+        <div *ngIf="location" class="catalog-info flex-row">
+            <button (click)="back()" mat-stroked-button>Back</button>
+
+            <span class="location-info"><strong>Location: </strong>{{location}}</span>
+
+            <span><strong>Branch: </strong>
+                <!-- show branch name if it is selected-->
+                <span *ngIf="branch">{{branch}}</span>
+
+                <!-- show menu if branch is not selected-->
+                <button *ngIf="!branch" mat-button [matMenuTriggerFor]="menu">
+                    Branches<span class="down-arrow material-icons">keyboard_arrow_down</span>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button *ngFor="let branch of locationBranches"
+                            [routerLink]="['/catalog', { location: location, branch: branch }]"
+                            mat-menu-item>{{branch}}</button>
+                </mat-menu>
+            </span>
+        </div>
+        <div *ngIf="!location" class="text-center no-data">
+            No data to display. Please select a location above.
+        </div>
+    </mat-card>
+    <div class="catalog-wrap">
+        <mat-grid-list class="" cols="4" rowHeight="1:1" gutterSize="15px">
+            <mat-grid-tile *ngFor="let item of catalog">
+                <mat-grid-tile-header>{{item.name}}</mat-grid-tile-header>
+
+                <!-- If Category Item then take from category directory -->
+                <div *ngIf="item.subcategories;else other_content">
+                    <img alt="catalog-image" *ngIf="item.image" class="item-image" src="{{'/assets/images/category/' + item.image}}" />
+                    <h2 *ngIf="!item.image">Item Image Not Available</h2>
+                </div>
+
+                <!-- If SubCategory Item then take from subcategory directory -->
+                <ng-template #other_content>
+                    <img alt="catalog-image" *ngIf="item.image" class="item-image" src="{{'/assets/images/category/subcategory/' + item.image}}" />
+                    <h2 *ngIf="!item.image">Item Image Not Available</h2>
+                </ng-template>
+
+                <mat-grid-tile-footer
+                        *ngIf="item.subcategories"
+                        class="pointer"
+                        (click) = "navigateToSubCategory(item.name)">
+<!--                        [routerLink]="['/catalog', { location: location, branch: branch, category: item.name}]"-->
+
+                    <span>Sub Categories</span>
+                    <span *ngIf="item.subcategories" class="material-icons">keyboard_arrow_right</span>
+                </mat-grid-tile-footer>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>
+
