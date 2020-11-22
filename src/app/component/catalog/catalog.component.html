@@ -31,13 +31,13 @@
 
                 <!-- If Category Item then take from category directory -->
                 <div *ngIf="item.subcategories;else other_content">
-                    <img alt="catalog-image" *ngIf="item.image" class="item-image" src="{{'/assets/images/category/' + item.image}}" />
+                    <img alt="catalog-image" *ngIf="item.image" class="item-image" src="{{imagesPath + item.image}}" />
                     <h2 *ngIf="!item.image">Item Image Not Available</h2>
                 </div>
 
                 <!-- If SubCategory Item then take from subcategory directory -->
                 <ng-template #other_content>
-                    <img alt="catalog-image" *ngIf="item.image" class="item-image" src="{{'/assets/images/category/subcategory/' + item.image}}" />
+                    <img alt="catalog-image" *ngIf="item.image" class="item-image" src="{{imagesPath + 'subcategory/' + item.image}}" />
                     <h2 *ngIf="!item.image">Item Image Not Available</h2>
                 </ng-template>
 

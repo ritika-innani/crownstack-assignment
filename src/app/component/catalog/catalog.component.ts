@@ -4,8 +4,7 @@ import {ICategory} from '../../models/category';
 import {CategoryService} from '../../services/category.service';
 import {ISubcategory} from '../../models/subcategory';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {LocationService} from "../../services/location.service";
-import {ILocation} from "../../models/location";
+import {AppConstants} from '../../constants/app.constants';
 
 @Component({
   selector: 'app-catalog',
@@ -18,12 +17,13 @@ export class CatalogComponent implements OnInit {
   branch: string;
   category?: string;
   locationBranches: string[];
+  imagesPath: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private categoryService: CategoryService,
-              private snackBar: MatSnackBar,
-              private locationService: LocationService) {
+              private snackBar: MatSnackBar) {
+    this.imagesPath = AppConstants.baseURL + AppConstants.projectName + '/assets/images/category/';
   }
 
   ngOnInit(): void {
